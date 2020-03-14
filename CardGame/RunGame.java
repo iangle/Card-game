@@ -7,14 +7,15 @@ import java.util.Random;
 public class RunGame {
 
     private int numHumans, numComps, cardNum = 0;
-    private int numCardsInDeck = 52;
 
     private Random rand = new Random();
 
     private Player[] humanPlayers;
     private Player[] compPlayers;
 
-    private Deck theDeck = new Deck(numCardsInDeck);
+    private Deck theDeck = new Deck();
+
+    private boolean gameOver = false;
 
     //default constructor
     public RunGame(){}
@@ -40,25 +41,28 @@ public class RunGame {
         for (int i = 0; i < this.numHumans; i++) {
             this.humanPlayers[i] = new Player(USER.HUMAN, createStartingHand());
         }
+
+        //play the game
+        Play();
     }
 
     //returns a random card from the deck and also removes that card
     //from the deck
     private Cards DrawCard() {
 
-        //creates a random number between 0 and the number of cards in the deck
-        int randNum = rand.nextInt(numCardsInDeck);
+        Cards newCard;
+        //gets the top card from the deck, saves it, then deletes it from the deck
+        if(!theDeck.getCards().empty()) {
 
-        //gets a random card from the deck, saves it, then deletes it from the deck
-        Cards newCard = theDeck.getCards().get(randNum);
-        theDeck.getCards().remove(randNum);
+            newCard = theDeck.getCards().pop();
 
-        //decreases the size of the deck
-        numCardsInDeck--;
+            theDeck.decNumCardsInDeck(1);
 
-        //returns the card that was drawn
-        return newCard;
-
+            return newCard;
+        }else{
+            System.out.println("the deck has no more cards!");
+            return null;
+        }
     }
 
     //creates the starting hand for a player
@@ -71,6 +75,7 @@ public class RunGame {
         for(int i = 0; i < 4; i++){
             //adds a card to the hand
             hand.add(DrawCard());
+
         }
 
         //returns the new hand
@@ -79,5 +84,17 @@ public class RunGame {
 
     private void Play(){
 
+
+        for (Player compPlayer : compPlayers) {
+                gameOver = compPlayer.getMyBooks().size() >= 4;
+        }
+
+        for(Player humanPlayer : humanPlayers){
+                gameOver = humanPlayer.getMyBooks().size() >= 4;
+        }
+
+        while(!theDeck.getCards().empty() && !gameOver){
+            
+        }
     }
 }
