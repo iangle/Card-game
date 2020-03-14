@@ -12,8 +12,10 @@ public class Deck {
     private int numCards = 52;
     private List<Cards> myDeck= new ArrayList<Cards>();
 
+    //default constructor
     public Deck(){}
 
+    //constructor with the number of cards in the deck as a parameter
     public Deck(int numCards){
         if(numCards != 52 && numCards != 54){
             System.out.println("That is not a valid deck size!!");

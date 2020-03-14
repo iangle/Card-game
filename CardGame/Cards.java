@@ -15,6 +15,8 @@ public class Cards {
 
     public Cards(){}
 
+    //creates the different suits and gives them a value that
+    //makes more since to print out to the screen
     public Cards(int rank, SUIT cardSuit){
         this.rank = rank;
         this.cardSuit = cardSuit;
@@ -47,6 +49,8 @@ public class Cards {
         return cardSuit;
     }
 
+    //overriding the toString function in order to
+    //print out a card's rank and suit
     @Override
     public String toString() {
         return "card Rank: " + rank + "\n" + "card Suit: " + suit;
