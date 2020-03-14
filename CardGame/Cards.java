@@ -13,15 +13,16 @@ public class Cards {
     private SUIT cardSuit;
     private String suit = "";
 
-    public Cards(){}
+    public Cards() {
+    }
 
     //creates the different suits and gives them a value that
     //makes more since to print out to the screen
-    public Cards(int rank, SUIT cardSuit){
+    public Cards(int rank, SUIT cardSuit) {
         this.rank = rank;
         this.cardSuit = cardSuit;
 
-        switch(cardSuit){
+        switch (cardSuit) {
             case DIAMOND:
                 suit = "Diamond";
                 break;
@@ -40,12 +41,12 @@ public class Cards {
     }
 
     //getter for the rank of a card
-    public int getRank(){
+    public int getRank() {
         return rank;
     }
 
     //getter for the suit of a card
-    public SUIT getSUIT(){
+    public SUIT getSUIT() {
         return cardSuit;
     }
 
@@ -53,6 +54,40 @@ public class Cards {
     //print out a card's rank and suit
     @Override
     public String toString() {
-        return "card Rank: " + rank + "\n" + "card Suit: " + suit;
+        return determineRank(rank) + " of " + suit + "s";
+    }
+
+    private String determineRank(int cardNum) {
+        switch (cardNum) {
+            case 1:
+                return "Ace";
+            case 2:
+                return "2";
+            case 3:
+                return "3";
+            case 4:
+                return "4";
+            case 5:
+                return "5";
+            case 6:
+                return "6";
+            case 7:
+                return "7";
+            case 8:
+                return "8";
+            case 9:
+                return "9";
+            case 10:
+                return "10";
+            case 11:
+                return "Jack";
+            case 12:
+                return "Queen";
+            case 13:
+                return "King";
+            default:
+                return "card type: ";
+        }
     }
 }
+

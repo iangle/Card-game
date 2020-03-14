@@ -3,6 +3,7 @@ package CardGame;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 public class RunGame {
 
@@ -16,6 +17,8 @@ public class RunGame {
     private Deck theDeck = new Deck();
 
     private boolean gameOver = false;
+
+    private Scanner scan;
 
     //default constructor
     public RunGame(){}
@@ -72,7 +75,7 @@ public class RunGame {
         List<Cards> hand = new ArrayList<Cards>();
 
         //adds 5 cards to the hand
-        for(int i = 0; i < 4; i++){
+        for(int i = 0; i < 5; i++){
             //adds a card to the hand
             hand.add(DrawCard());
 
@@ -89,12 +92,35 @@ public class RunGame {
                 gameOver = compPlayer.getMyBooks().size() >= 4;
         }
 
-        for(Player humanPlayer : humanPlayers){
+        for (Player humanPlayer : humanPlayers){
                 gameOver = humanPlayer.getMyBooks().size() >= 4;
         }
 
-        while(!theDeck.getCards().empty() && !gameOver){
-            
+        System.out.println("Welcome to my game of Go Fish! ");
+
+        while (!theDeck.getCards().empty() && !gameOver){
+
+                System.out.println("The cards in your hand are: ");
+
+                for(int i = 0; i < humanPlayers.length; i++) {
+
+                    for (int j = 0; j < humanPlayers[i].getHand().size(); j++) {
+
+                        System.out.println(humanPlayers[i].getHand().get(j).toString());
+                    }
+                }
+
+                System.out.println("Guess a card that is also in your hand (1-13): ");
+                int userGuess = scan.nextInt();
+
+
+
         }
+    }
+
+    private void checkGuess(int guess, USER whichUser){
+        //if(compPlayer){
+
+        //}
     }
 }
