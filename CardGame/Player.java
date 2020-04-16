@@ -18,6 +18,12 @@ public class Player {
     //a list that holds the sets of four that the player has gotten
     private List<Cards> myBooks = new ArrayList<>();
 
+    //an integer that keeps track of a unique number each player has
+    private static int playerNum = 1;
+
+    //an integer that defines the number of the player
+    private int eachPlayerNum = 0;
+
     //default constructor
     public Player(){}
 
@@ -49,4 +55,11 @@ public class Player {
     public List<Cards> getMyBooks(){
         return this.myBooks;
     }
+
+    public int getEachPlayerNum(){ return eachPlayerNum; }
+
+    public static int incPlayerNum(){ return playerNum++; }
+
+    public void setEachPlayerNum(int num){ eachPlayerNum = num; }
+
 }
